@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TESTURLS } from 'src/app/Constants/materialURLS';
+import { TestService } from '../test.service';
 @Component({
   selector: 'app-form-based-form',
   templateUrl: './form-based-form.component.html',
@@ -11,7 +12,11 @@ export class FormBasedFormComponent implements OnInit {
   activty: any;
   ind!:any;
   ngOnInit(): void {
+    console.log(typeof(TESTURLS[0][1]));
+
   }
+
+  constructor(private dataService:TestService){}
 
   active(data: string) {
     this.activty = data;
@@ -26,10 +31,13 @@ export class FormBasedFormComponent implements OnInit {
 
   openTest(index: any) {
     this.ind=index;
+    this.dataService.updateData(this.ind);
+    console.log(this.ind);
+
     if(this.activty){
-      var script = document.createElement("script");
+      let script = document.createElement("script");
       script.id = "ff-script";
-      script.src = TESTURLS[index];
+      script.src = String(TESTURLS[index][0]);
       script.defer = true;
       script.async = true;
       document.body.appendChild(script);
