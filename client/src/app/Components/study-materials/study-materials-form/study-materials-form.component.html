@@ -1,0 +1,22 @@
+<mat-sidenav-container class="example-container" [hasBackdrop]="true">
+  <mat-sidenav #sidenav [mode]="'over'" [position]="'end'" class="w-[40%] rounded-[100px]">
+    <div class="px-[5%] py-[5%]" *ngIf="whichOne=='pdf'">
+      <button mat-raised-button color="primary" class="" (click)="apiHitDriveSecureURLVerify();openNewTab(whichOne)">CAT Syllabus Siksha Website</button>
+    </div>
+    <div class="px-[5%] py-[5%]" *ngIf="whichOne=='url'">
+      <button mat-raised-button color="primary" class="" (click)="openNewTab(whichOne)">CAT Syllabus Byjus</button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <div class="mx-[10%] my-[4%]">
+      <div class="list">
+        <button mat-raised-button [color]="'accent'"  class="text-[1.5em] custom-SM" (click)="getWhichOne();sidenav.toggle()">Syllabus</button>
+      </div>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div> -->

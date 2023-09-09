@@ -1,0 +1,27 @@
+/* .container{
+  position: absolute;
+  left: 50%;
+  top:10%;
+  transform: translateX(-50%);
+} */
+
+.test{
+
+}
+
+p{
+  background-color: rgb(26, 26, 154);
+  box-shadow: 0 0 5px 2px rgba(0,0,0,0.2);
+  padding: 18px 12px;
+  width: 450px;
+  font-size: 1.4em;
+  border-radius: 10px;
+  margin-bottom:25px;
+  font-weight: 500;
+  color:white;
+  cursor: pointer;
+}
+
+p:hover{
+  background-color: rgb(200, 54, 1);
+}
