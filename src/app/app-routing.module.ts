@@ -7,8 +7,6 @@ const routes: Routes = [
   {path:"classify", loadChildren: () => import('./Components/classification/classification.module').then((m)=> m.ClassificationModule)},
   {path:"study", loadChildren: () => import('./Components/study-materials/study-materials.module').then((m)=> m.StudyMaterialsModule)},
   {path:"syllabus", loadChildren: () => import('./Components/syllabus/syllabus.module').then((m)=> m.SyllabusModule)}
-
-
 ];
 
 
