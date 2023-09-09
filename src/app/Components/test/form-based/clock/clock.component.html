@@ -1,0 +1,25 @@
+<!-- <mat-card class="clock-card">
+  <button mat-raised-button class="" *ngIf="!active" (click)="active = !active">
+    Start Timer
+  </button>
+  <mat-card-content *ngIf="active">
+    <div class="clock" >
+      {{ currentTime | date: 'hh:mm:ss a' }}
+    </div>
+  </mat-card-content>
+</mat-card> -->
+
+<mat-card class="clock-card">
+  <button mat-raised-button class="py-4" *ngIf="!active" (click)="active = !active; startTimer()">
+    Start Timer
+  </button>
+  <div class="timer-container py-4" *ngIf="active">
+    <!-- <input type="number" [(ngModel)]="countdown" placeholder="Set timer (seconds)"> -->
+    <!-- <button (click)="startTimer()" [disabled]="timerRunning">Start</button>
+    <button (click)="stopTimer()" [disabled]="!timerRunning">Stop</button> -->
+    <div class="timer">
+      {{ formatTime(countdown) }}
+    </div>
+  </div>
+
+</mat-card>

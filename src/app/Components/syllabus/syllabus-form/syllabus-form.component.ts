@@ -1,33 +1,47 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import { DRIVEURLS, URLS } from 'src/app/Constants/materialURLS';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
+import { URLS, DRIVEURLS } from 'src/app/Constants/materialURLS';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { SyllabusService } from '../syllabus.service';
+import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-syllabus-form',
   templateUrl: './syllabus-form.component.html',
-  styleUrls: ['./syllabus-form.component.css']
+  styleUrls: ['./syllabus-form.component.css'],
 })
-export class SyllabusFormComponent implements OnInit{
+export class SyllabusFormComponent implements OnInit {
+
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
-  secureKeyvalidate!:string;
+  secureKeyvalidate!: string;
   isSecureKeyValidated: boolean = false;
   whichOne!: string;
+  myForm: FormGroup;
+  isMediaChecked:boolean=false;
+  iframeSrc: string = 'about:blank';
 
-  constructor(private syllabusService:SyllabusService){}
+
+  constructor(private syllbusService: SyllabusService, public dialog: MatDialog,private fb: FormBuilder) {
+    this.myForm = this.fb.group({
+      pass: ['', [Validators.required]],
+    });
+  }
   ngOnInit(): void {
-    this.syllabusService.getDataFromAPI().subscribe((data: any) =>this.secureKeyvalidate=data);
+    this.syllbusService.getDataFromAPI().subscribe((data: any) => this.secureKeyvalidate = data);
   }
 
-  openNewTab(whichOne: any) {
-    if (whichOne == 'pdf') {
+  openNewTab(index: any) {
+    this.isMediaChecked=false;
+    if (this.whichOne == 'pdf') {
       if (this.isSecureKeyValidated) {
-        window.open(DRIVEURLS.SHIKSHA_SYLLABUS_URL, '_blank');
+        window.open(DRIVEURLS[index], '_blank');
         this.isSecureKeyValidated = false;
       } else alert('you are not authenticated');
-    } else if(whichOne == "url") {
-      window.open(URLS.BYJUS_SYLLABUS, '_blank');
+    } else if (this.whichOne == "url") {
+      window.open(URLS[index], '_blank');
     }
     this.sidenav.close();
   }
@@ -39,8 +53,8 @@ export class SyllabusFormComponent implements OnInit{
     }
   }
 
-  getWhichOne() {
-    let ans = window.prompt('PDF or URL?');
+  public async getWhichOne() {
+    const ans = this.myForm.controls['pass'].value;
     switch (ans) {
       case 'pdf': {
         this.whichOne = 'pdf';
@@ -55,4 +69,7 @@ export class SyllabusFormComponent implements OnInit{
       }
     }
   }
+
+
+
 }

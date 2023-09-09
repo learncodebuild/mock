@@ -1,0 +1,16 @@
+<div class="my-[2.5%] flex flex-col gap-10">
+  <div class="test-container flex flex-col">
+    <div class="mx-[10%] flex flex-row justify-between items-center gap-5 text-[20px] mb-5">
+      <p class="">Test</p>
+      <button mat-fab class="" color="primary" [routerLink]="'/classify'" routerLinkActive="router-link-active">&lt;-</button>
+    </div>
+    <div class="mx-[10%] flex flex-col gap-5" *ngIf="showList">
+      <button mat-raised-button class="" (click)="showList = !showList; openTest(0)">TEST 1</button>
+      <button mat-raised-button class="" (click)="showList = !showList; openTest(0)">TEST 2</button>
+    </div>
+    <div class="test flex flex-col gap-5" *ngIf="!showList">
+      <app-clock (onchange)="activty = true" (activeness)="active($event)"></app-clock>
+      <div id="ff-compose"></div>
+    </div>
+  </div>
+</div>

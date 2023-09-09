@@ -1,0 +1,17 @@
+.clock-card {
+  width: 300px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.clock {
+  font-size: 2em;
+}
+
+.timer-input {
+  width: 100px;
+}
+
+.timer {
+  font-size: 2em;
+}

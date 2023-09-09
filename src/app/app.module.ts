@@ -8,11 +8,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
-
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent  ],
   imports: [
     BrowserModule,
     HttpClientModule,

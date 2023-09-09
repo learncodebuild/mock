@@ -20,3 +20,10 @@
 .custom-SM{
   padding:25px !important;
 }
+
+.custom-SM-back{
+  padding:25px !important;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+}

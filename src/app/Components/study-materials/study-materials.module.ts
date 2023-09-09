@@ -8,8 +8,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatRadioModule} from '@angular/material/radio';
-
-
 @NgModule({
   declarations: [
     StudyMaterialsLayoutComponent,

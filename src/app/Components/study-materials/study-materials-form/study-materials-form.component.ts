@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
+import { MatSidenav } from '@angular/material/sidenav';
 import { URLS, DRIVEURLS } from 'src/app/Constants/materialURLS';
 import { StudyMaterialServiceService } from '../study-material-service.service';
 
@@ -23,14 +22,14 @@ export class StudyMaterialsFormComponent implements OnInit{
   }
 
   openNewTab(whichOne: any) {
-    if (whichOne == 'pdf') {
-      if (this.isSecureKeyValidated) {
-        window.open(DRIVEURLS.SHIKSHA_SYLLABUS_URL, '_blank');
-        this.isSecureKeyValidated = false;
-      } else alert('you are not authenticated');
-    } else if(whichOne == "url") {
-      window.open(URLS.BYJUS_SYLLABUS, '_blank');
-    }
+    // if (whichOne == 'pdf') {
+    //   if (this.isSecureKeyValidated) {
+    //     window.open(DRIVEURLS.SHIKSHA_SYLLABUS_URL, '_blank');
+    //     this.isSecureKeyValidated = false;
+    //   } else alert('you are not authenticated');
+    // } else if(whichOne == "url") {
+    //   window.open(URLS.BYJUS_SYLLABUS, '_blank');
+    // }
     this.sidenav.close();
   }
 
