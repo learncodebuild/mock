@@ -16,7 +16,7 @@ export class SyllabusFormComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
-  secureKeyvalidate!: string;
+  secureKeyvalidate: string = "12345";
   isSecureKeyValidated: boolean = false;
   whichOne!: string;
   myForm: FormGroup;
@@ -48,6 +48,7 @@ export class SyllabusFormComponent implements OnInit {
 
   apiHitDriveSecureURLVerify() {
     let ans = window.prompt('enter secureKey: ');
+    // if (ans == this.secureKeyvalidate) {
     if (ans == this.secureKeyvalidate) {
       this.isSecureKeyValidated = true;
     }

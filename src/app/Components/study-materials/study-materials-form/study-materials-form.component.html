@@ -1,22 +1,43 @@
 <mat-sidenav-container class="example-container" [hasBackdrop]="true">
   <mat-sidenav #sidenav [mode]="'over'" [position]="'end'" class="w-[40%] rounded-[100px]">
-    <div class="px-[5%] py-[5%]" *ngIf="whichOne=='pdf'">
-      <button mat-raised-button color="primary" class="" (click)="apiHitDriveSecureURLVerify();openNewTab(whichOne)">CAT Syllabus Siksha Website</button>
-    </div>
-    <div class="px-[5%] py-[5%]" *ngIf="whichOne=='url'">
-      <button mat-raised-button color="primary" class="" (click)="openNewTab(whichOne)">CAT Syllabus Byjus</button>
+    <!-- <div class="bg-blue-200 flex justify-center h-[10%] items-center" *ngIf="!isMediaChecked">
+      <form class="example-form" [formGroup]="myForm">
+        <mat-radio-group aria-label="Select an option" formControlName="pass" (change)="getWhichOne()">
+          <mat-radio-button value="url">WEB</mat-radio-button>
+          <mat-radio-button value="pdf">PDF</mat-radio-button>
+        </mat-radio-group>
+      </form>
+    </div> -->
+    <div class="px-[5%] py-[5%]">
+      <div class="flex flex-row justify-between items-center content-center">
+        <p class="text-[24px] font-medium">Content</p>
+      <button mat-fab class="" [color]="'primary'">&lt;-</button>
+      </div>
+      <div class="">
+        <!-- <p class="text-[24px] font-medium">{{childName}}</p> -->
+        <div class="flex flex-col" *ngFor="let item of data">
+          <span class="px-5 py-3 text-[20px] hover:bg-blue-300 cursor-pointer"
+          [ngClass]="{'active': item === activeItemChild}"
+          (click)="toggleSelectionChild(item);openNewTab(item.url)">{{item.name}}</span>
+        </div>
+        <div class="mt-[2%] flex flex-row justify-between items-center content-center">
+          <p class="text-[24px] font-medium">Youtube</p>
+        <!-- <button mat-fab class="" [color]="'primary'">&lt;-</button> -->
+        </div>
+      </div>
+
+      <!-- <button mat-raised-button color="primary" class="" (click)="openNewTab(1)">Career Launcher Syllabus</button> -->
     </div>
   </mat-sidenav>
 
   <mat-sidenav-content>
 
-    <div class="mx-[10%] my-[4%]">
-      <div class="list">
-        <button mat-raised-button [color]="'accent'"  class="text-[1.5em] custom-SM" (click)="getWhichOne();sidenav.toggle()">Syllabus</button>
+    <div class="mx-[10%] my-[4%] flex flex-col gap-5">
+      <div class="flex flex-row gap-5 justify-between">
+        <button mat-raised-button [color]="'accent'"  class="text-[1.5em] custom-SM" (click)="sidenav.toggle()">Content</button>
+        <button mat-raised-button [color]="'primary'"  class="text-[1.5em] custom-SM-back" [routerLink]="'/classify'" routerLinkActive="router-link-active">&lt;-</button>
       </div>
     </div>
 
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-<!-- <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div> -->

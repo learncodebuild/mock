@@ -12,11 +12,15 @@ export const WEBTESTURLS = [
       'desc':[
         {
           'iName':'Arithmetic Aptitude',
-          'iURL':'https://www.indiabix.com/aptitude/questions-and-answers/'
         },
         {
           'iName':'Data Interpretation',
-          'iURL':'https://www.indiabix.com/data-interpretation/questions-and-answers/'
+        },
+        {
+          'iName':'Online Aptitude Test',
+        },
+        {
+          'iName':'Data Interpretation Test',
         }
       ]
     },
@@ -25,16 +29,25 @@ export const WEBTESTURLS = [
       'desc':[
         {
           'iName':'Verbal Ability',
-          'iURL':'https://www.indiabix.com/verbal-ability/questions-and-answers/'
         },
         {
           'iName':'Logical Reasoning',
-          'iURL':'https://www.indiabix.com/logical-reasoning/questions-and-answers/'
         },
         {
           'iName':'Verbal Reasoning',
-          'iURL':'https://www.indiabix.com/verbal-reasoning/questions-and-answers/'
         }
       ]
     },
+];
+
+export const CONTENT = [
+  {name:"Arithmetic Ability", url:"https://www.examveda.com/mcq-question-on-arithmetic-ability/"},
+  {name:"Competitive Reasoning", url:"https://www.examveda.com/mcq-question-on-competitive-reasoning/"},
+  {name:"Data Interpretation", url:"https://www.examveda.com/mcq-question-on-data-interpretation/"},
+  {name:"Competitive English", url:"https://www.examveda.com/mcq-question-on-competitive-english/"},
+  {name:"Quantitative Aptitude Shortcuts, Quantitative Aptitude Syllabus", url:"https://questionpaper.org/quantitative-aptitude/"},
+];
+
+export const YOUTUBE = [
+
 ];

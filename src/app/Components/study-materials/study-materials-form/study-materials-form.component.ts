@@ -1,8 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { URLS, DRIVEURLS } from 'src/app/Constants/materialURLS';
+import { URLS, DRIVEURLS, WEBTESTURLS, CONTENT } from 'src/app/Constants/materialURLS';
 import { StudyMaterialServiceService } from '../study-material-service.service';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
+import { IB_APTITUDE } from 'src/app/Constants/indiabixAptitude';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+interface Data{
+  name:string;
+  url:string;
+  index:number;
+}
 @Component({
   selector: 'app-study-materials-form',
   templateUrl: './study-materials-form.component.html',
@@ -12,24 +21,31 @@ export class StudyMaterialsFormComponent implements OnInit{
 
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
-  secureKeyvalidate!:string;
+  secureKeyvalidate!: string;
   isSecureKeyValidated: boolean = false;
   whichOne!: string;
+  // myForm: FormGroup;
+  isMediaChecked:boolean=false;
+  iframeSrc: string = 'about:blank';
+  data:Data[]=[];
+  activeItemChild:any;
 
-  constructor(private studyService:StudyMaterialServiceService){}
+
+  // constructor(private syllbusService: StudyMaterialServiceService, private fb: FormBuilder) {
+  //   this.myForm = this.fb.group({
+  //     pass: ['', [Validators.required]],
+  //   });
+  // }
   ngOnInit(): void {
-    this.studyService.getDataFromAPI().subscribe((data: any) =>this.secureKeyvalidate=data);
+    // this.syllbusService.getDataFromAPI().subscribe((data: any) => this.secureKeyvalidate = data);
+    CONTENT.forEach((element,index)=>{
+      this.data.push({name:element.name, url:element.url, index:index});
+    })
   }
 
-  openNewTab(whichOne: any) {
-    // if (whichOne == 'pdf') {
-    //   if (this.isSecureKeyValidated) {
-    //     window.open(DRIVEURLS.SHIKSHA_SYLLABUS_URL, '_blank');
-    //     this.isSecureKeyValidated = false;
-    //   } else alert('you are not authenticated');
-    // } else if(whichOne == "url") {
-    //   window.open(URLS.BYJUS_SYLLABUS, '_blank');
-    // }
+  openNewTab(url: any) {
+    this.isMediaChecked=false;
+      window.open(url, '_blank');
     this.sidenav.close();
   }
 
@@ -40,20 +56,29 @@ export class StudyMaterialsFormComponent implements OnInit{
     }
   }
 
-  getWhichOne() {
-    let ans = window.prompt('PDF or URL?');
-    switch (ans) {
-      case 'pdf': {
-        this.whichOne = 'pdf';
-        break;
-      }
-      case 'url': {
-        this.whichOne = 'url';
-        break;
-      }
-      default: {
-        alert('Not valid');
-      }
+  toggleSelectionChild(item: any) {
+    if (this.activeItemChild === item) {
+      this.activeItemChild = null;
+    } else {
+      this.activeItemChild = item;
     }
   }
+
+  // public async getWhichOne() {
+  //   const ans = this.myForm.controls['pass'].value;
+  //   switch (ans) {
+  //     case 'pdf': {
+  //       this.whichOne = 'pdf';
+  //       break;
+  //     }
+  //     case 'url': {
+  //       this.whichOne = 'url';
+  //       break;
+  //     }
+  //     default: {
+  //       alert('Not valid');
+  //     }
+  //   }
+  // }
+
 }

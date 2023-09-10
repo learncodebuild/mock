@@ -1,11 +1,22 @@
 <mat-sidenav-container class="example-container" [hasBackdrop]="true">
   <mat-sidenav #sidenav [mode]="'over'" [position]="'end'" class="w-[40%] rounded-[100px]">
-    <div class="px-[5%] py-[5%] flex flex-col gap-5">
-      <!-- <button mat-raised-button color="primary" class="" *ngFor="let name in sideNavNames" (click)="showPages(0);openNewTab(0)">{{name}}</button> -->
-      <button mat-raised-button color="primary" class="" *ngFor="let item of sideNavNames" (click)="showPages(item.index)">{{item.name}}</button>
-      <!-- <button mat-raised-button color="primary" class="" (click)="openNewTab(1)">Reasoning</button> -->
+    <div class="px-[5%] py-[5%] flex flex-col gap-5" *ngIf="!showPagesClicked">
+      <button mat-raised-button color="primary" class="" *ngFor="let item of sideNavNames"
+        (click)="showPagesClicked = !showPagesClicked;showPages(item.index)">{{item.name}}</button>
+    </div>
+    <div class="px-[5%] py-[5%] flex flex-col gap-5" *ngIf="showPagesClicked">
+     <div class="flex flex-row justify-between items-center">
+      <p class="text-[24px] font-medium">{{mainName}}</p>
+      <button mat-fab class="text-[24px]" (click)="back()">&lt;-</button>
+     </div>
+      <div class="flex flex-col" *ngFor="let item of desc">
+        <span class="px-5 py-3 text-[20px] hover:bg-blue-300 cursor-pointer"
+          [ngClass]="{'active': item === activeItemSideNav}"
+          (click)="toggleSelectionSideNav(item);this.showChildClicked = true;this.sidenav.close();">{{item.name}}</span>
+      </div>
     </div>
   </mat-sidenav>
+
 
   <mat-sidenav-content>
 
@@ -15,13 +26,17 @@
         <!-- <object data="https://stackoverflow.com" width="600" height="400">
           <embed src="https://stackoverflow.com" width="600" height="400"/>
       </object> -->
-        <button mat-raised-button [color]="'accent'"  class="text-[1.5em] custom-SM" (click)="sidenav.toggle()">Topics</button>
-        <button mat-raised-button [color]="'primary'"  class="text-[1.5em] custom-SM-back" [routerLink]="'/classify'" routerLinkActive="router-link-active">&lt;-</button>
+        <button mat-raised-button [color]="'accent'" class="text-[1.5em] custom-SM"
+          (click)="sidenav.toggle()">Topics</button>
+        <button mat-raised-button [color]="'primary'" class="text-[1.5em] custom-SM-back" [routerLink]="'/classify'"
+          routerLinkActive="router-link-active">&lt;-</button>
       </div>
-      <div class="">
-        <p class="text-[24px] font-medium">{{mainName}}</p>
-        <div class="flex flex-col" *ngFor="let item of desc">
-          <span class="px-5 py-3 text-[20px] hover:bg-blue-300 cursor-pointer" [ngClass]="{'active': item === activeItem}" (click)="toggleSelection(item);openNewTab(item.url)" >{{item.name}}</span>
+      <div class="" *ngIf="showChildClicked">
+        <p class="text-[24px] font-medium">{{childName}}</p>
+        <div class="flex flex-col" *ngFor="let item of childNames">
+          <span class="px-5 py-3 text-[20px] hover:bg-blue-300 cursor-pointer"
+            [ngClass]="{'active': item === activeItemChild}" *ngIf="childName==item.tag"
+            (click)="toggleSelectionChild(item);openNewTab(item.url)">{{item.name}}</span>
         </div>
       </div>
     </div>
