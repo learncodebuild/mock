@@ -7,7 +7,8 @@ const routes: Routes = [
   {path:"classify", loadChildren: () => import('./Components/classification/classification.module').then((m)=> m.ClassificationModule)},
   {path:"study", loadChildren: () => import('./Components/study-materials/study-materials.module').then((m)=> m.StudyMaterialsModule)},
   {path:"syllabus", loadChildren: () => import('./Components/syllabus/syllabus.module').then((m)=> m.SyllabusModule)},
-  {path:"test", loadChildren: () => import('./Components/test/form-based/form-based.module').then((m)=> m.FormBasedModule)}
+  {path:"test", loadChildren: () => import('./Components/test/form-based/form-based.module').then((m)=> m.FormBasedModule)},
+  {path:"test/web", loadChildren: () => import('./Components/test/web-based/web-based.module').then((m)=> m.WebBasedModule)},
 
 ];
 
