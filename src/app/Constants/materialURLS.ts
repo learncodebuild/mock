@@ -46,8 +46,17 @@ export const CONTENT = [
   {name:"Data Interpretation", url:"https://www.examveda.com/mcq-question-on-data-interpretation/"},
   {name:"Competitive English", url:"https://www.examveda.com/mcq-question-on-competitive-english/"},
   {name:"Quantitative Aptitude Shortcuts, Quantitative Aptitude Syllabus", url:"https://questionpaper.org/quantitative-aptitude/"},
+  {name:"IndiaBix-All", url:"https://www.indiabix.com"},
+  {name:"Examveda-All", url:"https://www.examveda.com"},
+  {name:"Sawal-All", url:"https://www.sawaal.com/"},
+  {name:"CAT Active FB Group", url:"https://facebook.com/groups/Rockthecat"},
 ];
 
 export const YOUTUBE = [
-
-];
+  {name:"Rodha", url:"https://www.youtube.com/@Rodha/videos"},
+  {name:"MBA Pathshala", url:"https://www.youtube.com/@mba_pathshala/videos"},
+  {name:"Elites Grid", url:"https://www.youtube.com/@elitesgridCAT/videos"},
+  {name:"the 99 percentile club", url:"https://www.youtube.com/@99percentileclub/videos"},
+  {name:"gejo speaks", url:"https://www.youtube.com/@GejoSpeaks/videos"},
+  {name:"Google Sheets", url:"https://docs.google.com/spreadsheets/d/121TJowkkWLeaPSAYp5Cokg0If9iwBtFDF6CZ5JWIYO0/edit?usp=sharing"},
+]

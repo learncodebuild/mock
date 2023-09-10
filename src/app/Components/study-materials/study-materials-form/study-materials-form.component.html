@@ -20,9 +20,11 @@
           [ngClass]="{'active': item === activeItemChild}"
           (click)="toggleSelectionChild(item);openNewTab(item.url)">{{item.name}}</span>
         </div>
-        <div class="mt-[2%] flex flex-row justify-between items-center content-center">
-          <p class="text-[24px] font-medium">Youtube</p>
-        <!-- <button mat-fab class="" [color]="'primary'">&lt;-</button> -->
+        <p class="pt-[5%] text-[24px] font-medium">Youtube</p>
+        <div class="flex flex-col" *ngFor="let item of ytData">
+          <span class="px-5 py-3 text-[20px] hover:bg-blue-300 cursor-pointer"
+          [ngClass]="{'active': item === activeItemChild}"
+          (click)="toggleSelectionChild(item);openNewTab(item.url)">{{item.name}}</span>
         </div>
       </div>
 

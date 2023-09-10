@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { URLS, DRIVEURLS, WEBTESTURLS, CONTENT } from 'src/app/Constants/materialURLS';
+import { URLS, DRIVEURLS, WEBTESTURLS, CONTENT, YOUTUBE } from 'src/app/Constants/materialURLS';
 import { StudyMaterialServiceService } from '../study-material-service.service';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -28,6 +28,7 @@ export class StudyMaterialsFormComponent implements OnInit{
   isMediaChecked:boolean=false;
   iframeSrc: string = 'about:blank';
   data:Data[]=[];
+  ytData:Data[]=[];
   activeItemChild:any;
 
 
@@ -40,6 +41,9 @@ export class StudyMaterialsFormComponent implements OnInit{
     // this.syllbusService.getDataFromAPI().subscribe((data: any) => this.secureKeyvalidate = data);
     CONTENT.forEach((element,index)=>{
       this.data.push({name:element.name, url:element.url, index:index});
+    })
+    YOUTUBE.forEach((element,index)=>{
+      this.ytData.push({name:element.name, url:element.url, index:index});
     })
   }
 
